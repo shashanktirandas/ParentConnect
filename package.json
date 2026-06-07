@@ -1,0 +1,27 @@
+{
+  "name": "parentconnect",
+  "version": "1.0.0",
+  "description": "AI-Powered Automated Student Attendance Notification System for Pallavi Engineering College.",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "keywords": [
+    "attendance",
+    "parent-notification",
+    "student-safety",
+    "node",
+    "express",
+    "mysql"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mysql2": "^3.11.5",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.9.16"
+  }
+}

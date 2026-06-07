@@ -1,0 +1,2 @@
+-- ParentConnect database schema placeholder.
+-- MySQL tables for students, attendance, faculty, and parent notifications will be added later.

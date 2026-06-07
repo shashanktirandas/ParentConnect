@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ParentConnect | Pallavi Engineering College</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="app-shell attendance-page">
+    <section class="hero-panel" aria-labelledby="app-title">
+      <div class="brand-block">
+        <div class="logo-frame" aria-label="Pallavi Engineering College logo">
+          <img src="images/palv_college_logo.png" alt="Pallavi Engineering College logo">
+        </div>
+        <p class="college-name">PALLAVI ENGINEERING COLLEGE</p>
+      </div>
+
+      <div class="title-block">
+        <p class="eyebrow">Biometric Attendance Portal</p>
+        <h1 id="app-title">ParentConnect</h1>
+        <p class="subtitle">AI-Powered Automated Student Attendance Notification System</p>
+        <p class="tagline">Smart Attendance <span aria-hidden="true">•</span> Instant Alerts <span aria-hidden="true">•</span> Safer Students</p>
+      </div>
+
+      <form class="glass-card attendance-form" id="attendanceForm" novalidate>
+        <div class="form-grid">
+          <label class="field-group" for="rollNumber">
+            <span>Roll Number</span>
+            <input id="rollNumber" name="rollNumber" type="text" placeholder="Enter student roll number" autocomplete="off">
+          </label>
+
+          <label class="field-group" for="password">
+            <span>Password</span>
+            <input id="password" name="password" type="password" placeholder="Simulated fingerprint verification" autocomplete="current-password">
+          </label>
+        </div>
+
+        <button class="primary-button" type="submit">
+          <span class="button-icon" aria-hidden="true">✓</span>
+          Mark Attendance
+        </button>
+
+        <div class="status-message" id="statusMessage" role="status" aria-live="polite">
+          Enter credentials to simulate biometric attendance marking.
+        </div>
+      </form>
+
+      <a class="secondary-button" href="faculty-login.html">Faculty Login</a>
+    </section>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
