@@ -17,22 +17,27 @@
       </div>
       <p class="college-name">PALLAVI ENGINEERING COLLEGE</p>
       <h1>Faculty Login</h1>
-      <p class="subtitle">Faculty authentication will be implemented in the backend phase.</p>
+      <p class="subtitle">Access your attendance dashboard securely.</p>
 
-      <form class="stacked-form" novalidate>
+      <form class="stacked-form" id="facultyLoginForm" novalidate>
         <label class="field-group" for="facultyId">
           <span>Faculty ID</span>
-          <input id="facultyId" type="text" placeholder="Enter faculty ID" disabled>
+          <input id="facultyId" name="facultyId" type="text" placeholder="Enter faculty ID" autocomplete="username">
         </label>
         <label class="field-group" for="facultyPassword">
           <span>Password</span>
-          <input id="facultyPassword" type="password" placeholder="Backend integration pending" disabled>
+          <input id="facultyPassword" name="facultyPassword" type="password" placeholder="Enter password" autocomplete="current-password">
         </label>
-        <button class="primary-button" type="button" disabled>Login Pending</button>
+        <button class="primary-button" type="submit">Faculty Login</button>
       </form>
+
+      <div class="status-message" id="facultyLoginStatus" role="status" aria-live="polite">
+        Enter your faculty credentials to continue.
+      </div>
 
       <a class="secondary-button" href="index.html">Back to Attendance</a>
     </section>
   </main>
+  <script src="js/script.js"></script>
 </body>
 </html>

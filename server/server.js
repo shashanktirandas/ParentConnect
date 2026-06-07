@@ -3,8 +3,10 @@ const express = require("express");
 const cors = require("cors");
 const pool = require("./config/db");
 const attendanceRoutes = require("./routes/attendanceRoutes");
+const facultyRoutes = require("./routes/facultyRoutes");
 const { reminderScheduler } = require("./scheduler/reminderScheduler");
 const { parentNotificationScheduler } = require("./scheduler/parentNotificationScheduler");
+const { facultyReportScheduler } = require("./scheduler/facultyReportScheduler");
 
 const app = express();
 const PORT = 3000;
@@ -15,6 +17,7 @@ app.use(express.json());
 
 // Register feature routes in a modular way for future expansion.
 app.use("/api/attendance", attendanceRoutes);
+app.use("/api/faculty", facultyRoutes);
 
 // Lightweight health endpoint for checking that the server is alive.
 app.get("/", (req, res) => {
@@ -39,6 +42,7 @@ async function startServer() {
   await testDatabaseConnection();
   reminderScheduler();
   parentNotificationScheduler();
+  facultyReportScheduler();
 
   app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
