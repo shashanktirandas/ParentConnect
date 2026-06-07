@@ -90,6 +90,34 @@ function buildAttendanceReminderHtml(student) {
   `;
 }
 
+function buildParentNotificationHtml(student) {
+  return `
+    <h2>🚨 Student Absence Alert</h2>
+
+    <p>Dear <b>${student.parent_name}</b>,</p>
+
+    <p>
+      This is to inform you that your child
+
+      <b>${student.name}</b>
+
+      (Roll Number: <b>${student.roll_no}</b>)
+
+      has not marked attendance today.
+
+      Please contact your child if necessary.
+    </p>
+
+    <hr>
+
+    <p>
+      ParentConnect
+
+      AI Powered Automated Student Attendance Notification System
+    </p>
+  `;
+}
+
 async function sendAttendanceConfirmation(student) {
   if (!student.student_email) {
     console.log(`Email skipped: no student email found for ${student.roll_no}.`);
@@ -122,10 +150,26 @@ async function sendReminderEmail(student) {
   console.log(`Reminder email sent to ${student.student_email}`);
 }
 
+async function sendParentNotification(student) {
+  if (!student.parent_email) {
+    console.log(`Parent notification skipped: no parent email found for ${student.roll_no}.`);
+    return;
+  }
+
+  await transporter.sendMail({
+    from: `ParentConnect <${process.env.FROM_EMAIL}>`,
+    to: student.parent_email,
+    subject: "Student Absence Notification - ParentConnect",
+    html: buildParentNotificationHtml(student),
+  });
+
+  console.log(`Parent email sent to ${student.parent_email}`);
+}
+
 module.exports = {
   sendAttendanceConfirmation,
   sendReminderEmail,
+  sendParentNotification,
   // Future reusable email functions can be added here:
-  // sendParentNotification,
   // sendFacultyAbsentList,
 };

@@ -4,6 +4,7 @@ const cors = require("cors");
 const pool = require("./config/db");
 const attendanceRoutes = require("./routes/attendanceRoutes");
 const { reminderScheduler } = require("./scheduler/reminderScheduler");
+const { parentNotificationScheduler } = require("./scheduler/parentNotificationScheduler");
 
 const app = express();
 const PORT = 3000;
@@ -37,6 +38,7 @@ async function testDatabaseConnection() {
 async function startServer() {
   await testDatabaseConnection();
   reminderScheduler();
+  parentNotificationScheduler();
 
   app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
