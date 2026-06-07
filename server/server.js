@@ -1,16 +1,22 @@
 const express = require("express");
 const pool = require("./config/db");
+const attendanceRoutes = require("./routes/attendanceRoutes");
 
 const app = express();
 const PORT = 3000;
 
-// Built-in middleware for future JSON request bodies.
+// Parse JSON request bodies for API routes.
 app.use(express.json());
 
-// Health route only confirms that the server process is running.
-// Attendance APIs, faculty login, and dashboards will be added in future phases.
+// Register feature routes in a modular way for future expansion.
+app.use("/api/attendance", attendanceRoutes);
+
+// Lightweight health endpoint for checking that the server is alive.
 app.get("/", (req, res) => {
-  res.send("ParentConnect backend is running.");
+  res.json({
+    success: true,
+    message: "ParentConnect backend is running.",
+  });
 });
 
 async function testDatabaseConnection() {
