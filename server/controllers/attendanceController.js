@@ -1,4 +1,5 @@
 const pool = require("../config/db");
+const { sendAttendanceConfirmation } = require("../services/emailService");
 
 const REQUIRED_FIELDS_MESSAGE = "Roll Number and Password are required.";
 
@@ -16,7 +17,7 @@ async function markAttendance(req, res) {
   try {
     // Find student
     const [students] = await pool.execute(
-      "SELECT id, password FROM students WHERE roll_no = ? LIMIT 1",
+      "SELECT id, name, roll_no, student_email, password FROM students WHERE roll_no = ? LIMIT 1",
       [roll_no]
     );
 
@@ -58,6 +59,14 @@ async function markAttendance(req, res) {
       (?, CURDATE(), CURTIME(), ?)`,
       [student.id, "Present"]
     );
+
+    // Email delivery should never block or reverse a successful attendance mark.
+    try {
+      await sendAttendanceConfirmation(student);
+    } catch (emailError) {
+      console.error("Attendance confirmation email failed:");
+      console.error(emailError);
+    }
 
     return res.status(200).json({
       success: true,
