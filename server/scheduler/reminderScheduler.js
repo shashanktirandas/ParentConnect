@@ -12,36 +12,35 @@ let reminderTask = null;
 let isReminderJobRunning = false;
 
 function getReminderSchedule() {
-  return process.env.TEST_MODE === "true" ? "* * * * *" : "45 9 * * *";
+  return process.env.REMINDER_CRON || "45 9 * * *";
 }
 
 async function getStudentsWithoutAttendanceToday() {
   const [students] = await pool.execute(
     `SELECT
-        s.id,
-        s.name,
-        s.roll_no,
-        s.student_email
-     FROM students s
-     WHERE NOT EXISTS (
-        SELECT 1
-        FROM attendance a
-        WHERE a.student_id = s.id
-          AND a.attendance_date = CURDATE()
+        id,
+        name,
+        roll_no,
+        student_email
+     FROM students
+     WHERE id NOT IN (
+        SELECT student_id
+        FROM attendance
+        WHERE attendance_date = CURDATE()
      )`
   );
 
   return students;
 }
 
-async function logReminderAttempt(studentId, status, errorMessage = null) {
+async function logReminderAttempt(studentId, status, message = null) {
   try {
     await pool.execute(
       `INSERT INTO notification_logs
-        (student_id, email_type, status, error_message)
+        (student_id, email_type, status, message)
        VALUES
         (?, ?, ?, ?)`,
-      [studentId, REMINDER_EMAIL_TYPE, status, errorMessage]
+      [studentId, REMINDER_EMAIL_TYPE, status, message]
     );
   } catch (logError) {
     console.error("Failed to write reminder notification log:");
@@ -57,9 +56,9 @@ async function processReminderStudent(student) {
 
   try {
     await sendReminderEmail(student);
-    await logReminderAttempt(student.id, REMINDER_STATUS.SUCCESS);
+    await logReminderAttempt(student.id, REMINDER_STATUS.SUCCESS, "Reminder email sent successfully.");
   } catch (emailError) {
-    console.error(`Reminder email failed for ${student.roll_no}:`);
+    console.error(`Reminder email failed for ${student.student_email}`);
     console.error(emailError);
 
     await logReminderAttempt(
@@ -110,11 +109,12 @@ function startReminderScheduler() {
     }
   );
 
-  console.log(`Attendance reminder scheduler started with schedule: ${schedule}`);
+  console.log("Reminder scheduler started.");
   return reminderTask;
 }
 
 module.exports = {
+  reminderScheduler: startReminderScheduler,
   startReminderScheduler,
   runAttendanceReminderJob,
 };

@@ -68,46 +68,25 @@ function buildAttendanceConfirmationHtml(student) {
 }
 
 function buildAttendanceReminderHtml(student) {
-  const current = formatDateTime();
-
   return `
-    <h2>Attendance Reminder</h2>
+    <h2>⏰ Attendance Reminder</h2>
 
     <p>Hello <b>${student.name}</b>,</p>
 
-    <p>Your attendance has not been marked for today.</p>
-
-    <table border="1" cellpadding="8">
-      <tr>
-        <td><b>Roll Number</b></td>
-        <td>${student.roll_no}</td>
-      </tr>
-      <tr>
-        <td><b>Date</b></td>
-        <td>${current.date}</td>
-      </tr>
-      <tr>
-        <td><b>Reminder Time</b></td>
-        <td>${current.time}</td>
-      </tr>
-    </table>
-
-    <br>
-
     <p>
-      Please mark your attendance as soon as possible.
-    </p>
+      You have not marked your attendance today.
 
-    <p>
-      Thank you for using
-      <b>ParentConnect</b>
+      Please mark your attendance before <b>10:00 AM</b>.
+
+      If attendance is not marked before 10:00 AM,
+      your parent may receive an absence notification.
     </p>
 
     <hr>
 
-    <p>
-      AI Powered Automated Student Attendance Notification System
-    </p>
+    <p><b>ParentConnect</b></p>
+
+    <p>AI Powered Automated Student Attendance Notification System</p>
   `;
 }
 
@@ -140,7 +119,7 @@ async function sendReminderEmail(student) {
     html: buildAttendanceReminderHtml(student),
   });
 
-  console.log(`Attendance reminder email sent to ${student.student_email}.`);
+  console.log(`Reminder email sent to ${student.student_email}`);
 }
 
 module.exports = {
