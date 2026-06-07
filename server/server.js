@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const pool = require("./config/db");
 const attendanceRoutes = require("./routes/attendanceRoutes");
-
+const { startReminderScheduler } = require("./scheduler/reminderScheduler");
 
 const app = express();
 const PORT = 3000;
@@ -36,6 +36,7 @@ async function testDatabaseConnection() {
 
 async function startServer() {
   await testDatabaseConnection();
+  startReminderScheduler();
 
   app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
