@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const pool = require("./config/db");
 const attendanceRoutes = require("./routes/attendanceRoutes");
 
@@ -6,6 +7,7 @@ const app = express();
 const PORT = 3000;
 
 // Parse JSON request bodies for API routes.
+app.use(cors());
 app.use(express.json());
 
 // Register feature routes in a modular way for future expansion.
