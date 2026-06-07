@@ -5,3 +5,4 @@
 Thumbs.db
 .DS_Store
 .vscode/settings.json
+node_modules/
