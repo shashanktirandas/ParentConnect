@@ -349,3 +349,291 @@ h1 {
     gap: 2px;
   }
 }
+/* ===========================
+   Faculty Dashboard Table
+=========================== */
+
+.student-table-section{
+
+    margin-top:40px;
+
+}
+
+.student-table-section h2{
+
+    margin-bottom:20px;
+
+    color:#ffffff;
+
+}
+
+#studentTable{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    overflow:hidden;
+
+    border-radius:12px;
+
+}
+
+#studentTable thead{
+
+    background:#4f46e5;
+
+    color:white;
+
+}
+
+#studentTable th{
+
+    padding:15px;
+
+    text-align:left;
+
+}
+
+#studentTable td{
+
+    padding:15px;
+
+    border-bottom:1px solid rgba(255,255,255,.1);
+
+}
+
+#studentTable tbody tr{
+
+    transition:.3s;
+
+}
+
+#studentTable tbody tr:hover{
+
+    background:rgba(255,255,255,.05);
+
+}
+
+#studentTable tbody tr:last-child td{
+
+    border-bottom:none;
+
+}
+.dashboard-preview{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+    gap:20px;
+
+    margin:30px 0;
+
+}
+
+.dashboard-preview article{
+
+    background:rgba(255,255,255,.08);
+
+    padding:20px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    backdrop-filter:blur(10px);
+
+}
+
+.dashboard-preview article span{
+
+    display:block;
+
+    font-size:15px;
+
+    opacity:.8;
+
+}
+
+.dashboard-preview article strong{
+
+    display:block;
+
+    font-size:34px;
+
+    margin-top:10px;
+
+    color:#7dd3fc;
+
+}
+.present{
+
+    color:#22c55e;
+
+    font-weight:bold;
+
+}
+
+.absent{
+
+    color:#ef4444;
+
+    font-weight:bold;
+
+}
+
+.search-container{
+
+    margin:20px 0;
+
+}
+
+#searchInput{
+
+    width:100%;
+
+    padding:12px 16px;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    outline:none;
+
+}
+
+.filter-container{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:20px;
+
+}
+
+.filter-container button{
+
+    border:none;
+
+    padding:10px 16px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+}
+
+.filter-container button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+#exportBtn{
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    margin-bottom:20px;
+
+}
+
+/* ==========================
+   Notification History
+========================== */
+
+.notification-section{
+
+    margin-top:40px;
+
+}
+
+.notification-section h2{
+
+    margin-bottom:20px;
+
+}
+
+.notification-section table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    overflow:hidden;
+
+    border-radius:12px;
+
+}
+
+.notification-section thead{
+
+    background:#4338ca;
+
+    color:white;
+
+}
+
+.notification-section th{
+
+    padding:15px;
+
+    text-align:left;
+
+}
+
+.notification-section td{
+
+    padding:15px;
+
+    border-bottom:1px solid rgba(255,255,255,.1);
+
+}
+
+.notification-section tbody tr:hover{
+
+    background:rgba(255,255,255,.05);
+
+}
+
+
+.success-badge{
+
+    background:#22c55e;
+
+    color:white;
+
+    padding:5px 10px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+}
+
+.failed-badge{
+
+    background:#ef4444;
+
+    color:white;
+
+    padding:5px 10px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+}

@@ -67,7 +67,74 @@ async function loginFaculty(req, res) {
     });
   }
 }
+async function getNotifications(req, res) {
 
+    const { faculty_id } = req.query;
+
+    try {
+
+        const [rows] = await pool.execute(
+
+            `SELECT
+
+            nl.sent_at,
+
+            nl.email_type,
+
+            s.roll_no,
+
+            s.name,
+
+            nl.status
+
+            FROM notification_logs nl
+
+            JOIN students s
+
+            ON nl.student_id = s.id
+
+            JOIN faculty f
+
+            ON s.department = f.department
+            AND s.year = f.year
+            AND s.section = f.section
+
+            WHERE f.faculty_id = ?
+
+            ORDER BY nl.sent_at DESC
+
+            LIMIT 50`,
+
+            [faculty_id]
+
+        );
+
+        res.json({
+
+            success: true,
+
+            notifications: rows
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.log(error);
+
+        res.status(500).json({
+
+            success: false,
+
+            message: "Server Error"
+
+        });
+
+    }
+
+}
 module.exports = {
   loginFaculty,
+    getNotifications
 };

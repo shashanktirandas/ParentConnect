@@ -1,0 +1,13 @@
+faculty_id,name,password,email,department,year,section
+PALV-CSE2A,Ramesh Sir,Ramesh@123,ramesh@college.com,CSE,2,A
+PALV-CSE2B,Sowmya Madam,Sowmya@123,sowmya@college.com,CSE,2,B
+PALV-AIML2A,Priya Madam,Priya@123,priya@college.com,CSE-AIML,2,A
+PALV-AIML2B,Ravi Sir,Ravi@123,ravi@college.com,CSE-AIML,2,B
+PALV-ECE2A,Srikanth Sir,Srikanth@123,srikanth@college.com,ECE,2,A
+PALV-ECE2B,Anitha Madam,Anitha@123,anitha@college.com,ECE,2,B
+PALV-EEE2A,Kiran Sir,Kiran@123,kiran@college.com,EEE,2,A
+PALV-EEE2B,Deepa Madam,Deepa@123,deepa@college.com,EEE,2,B
+PALV-MECH2A,Mohan Sir,Mohan@123,mohan@college.com,MECH,2,A
+PALV-MECH2B,Lakshmi Madam,Lakshmi@123,lakshmi@college.com,MECH,2,B
+PALV-CIVIL2A,Rajesh Sir,Rajesh@123,rajesh@college.com,CIVIL,2,A
+PALV-CIVIL2B,Bhavani Madam,Bhavani@123,bhavani@college.com,CIVIL,2,B

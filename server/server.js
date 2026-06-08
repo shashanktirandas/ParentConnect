@@ -19,6 +19,10 @@ app.use(express.json());
 app.use("/api/attendance", attendanceRoutes);
 app.use("/api/faculty", facultyRoutes);
 
+const dashboardRoutes =
+require("./routes/dashboardRoutes");
+app.use("/api/faculty/dashboard",dashboardRoutes);
+
 // Lightweight health endpoint for checking that the server is alive.
 app.get("/", (req, res) => {
   res.json({

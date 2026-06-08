@@ -17,22 +17,117 @@
       <p class="subtitle">Attendance analytics, student records, and parent alert monitoring will be added in future phases.</p>
 
       <div class="dashboard-preview" aria-label="Dashboard preview cards">
-        <article>
-          <span>Present</span>
-          <strong>--</strong>
-        </article>
-        <article>
-          <span>Absent</span>
-          <strong>--</strong>
-        </article>
-        <article>
-          <span>Alerts Sent</span>
-          <strong>--</strong>
-        </article>
-      </div>
+                  <article>
+                      <span>Total Students</span>
+                      <strong id="totalStudents">--</strong>
+                  </article>
 
-      <a class="secondary-button" href="index.html">Back to Attendance</a>
+                  <article>
+                      <span>Present</span>
+                      <strong id="presentStudents">--</strong>
+                  </article>
+
+                  <article>
+                      <span>Absent</span>
+                      <strong id="absentStudents">--</strong>
+                  </article>
+
+                  <article>
+                      <span>Parents Notified Today</span>
+                      <strong id="alertsSent">--</strong>
+                  </article>
+                  
+      </div>
+      <div class="filter-container">
+
+    <button id="allBtn">
+        All
+    </button>
+
+    <button id="presentBtn">
+        Present
+    </button>
+
+    <button id="absentBtn">
+        Absent
+    </button>
+    <button id="exportBtn">
+
+    📥 Export Attendance CSV
+
+</button>
+
+</div>
+      <div class="search-container">
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search Roll Number..."
+    >
+
+</div>
+      <section class="student-table-section">
+
+    <h2>Today's Attendance</h2>
+
+    <table id="studentTable">
+
+        <thead>
+
+            <tr>
+
+                <th>Roll Number</th>
+
+                <th>Name</th>
+
+                <th>Status</th>
+
+                <th>Time</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="studentTableBody">
+
+        </tbody>
+
+    </table>
+
+</section>
+      <section class="notification-section">
+
+    <h2>Notification History</h2>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Date & Time</th>
+                <th>Type</th>
+                <th>Roll Number</th>
+                <th>Name</th>
+                <th>Status</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="notificationTableBody">
+
+        </tbody>
+
+    </table>
+
+</section>
+      <button class="secondary-button" id="logoutBtn">Logout
+</button>
     </section>
+    
   </main>
+  <script src="js/dashboard.js"></script>
 </body>
 </html>
