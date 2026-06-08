@@ -104,7 +104,7 @@ async function loadDashboard() {
         // Student table
         allStudents = result.data.students;
         renderStudents(allStudents);
-        loadNotifications();
+        //loadNotifications();
 
 const tbody = document.getElementById("studentTableBody");
 
